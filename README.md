@@ -7,7 +7,7 @@
 
 # ¿Qué es el patrón de diseño Composite?
 
-El patrón de diseño Composite es un **patrón estructural** que permite componer objetos en estructuras de árbol para representar relaciones de **"parte-todo"**.
+El patrón de diseño Composite es un **patrón estructural** que permite componer objetos en estructuras de árbol para representar relaciones 
 
 Su principal ventaja es que permite tratar **objetos individuales** y **grupos de objetos** de la misma manera.
 
