@@ -162,37 +162,86 @@ namespace composite
 {
     class Program
     {
+        static void MostrarComponentes(Componente comp)
+        {
+            Console.WriteLine("\nComponentes:");
+
+            var hijos = comp.ObtenerHijos();
+
+            if (hijos != null)
+            {
+                foreach (var item in hijos)
+                {
+                    Console.WriteLine("- " + item.Nombre + " ($" + item.ObtenerPrecio + ")");
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
+            //  PC LUJOSA
             Componente pcLujosa = new Directorio("PC Lujosa");
 
-            pcLujosa.AgregarHijo(new Archivo("RAM", "Corsair", "RGB", "32GB", 3000));
-            pcLujosa.AgregarHijo(new Archivo("RAM", "Corsair", "RGB", "32GB", 3000));
-            pcLujosa.AgregarHijo(new Archivo("GPU", "NVIDIA", "Negro", "RTX 4090", 25000));
-            pcLujosa.AgregarHijo(new Archivo("Gabinete", "NZXT", "Blanco", "Con RGB", 2500));
+            pcLujosa.AgregarHijo(new Archivo("RAM 32GB", "Corsair", "RGB", "DDR5", 3000));
+            pcLujosa.AgregarHijo(new Archivo("RAM 32GB", "Corsair", "RGB", "DDR5", 3000));
+            pcLujosa.AgregarHijo(new Archivo("GPU RTX 4090", "NVIDIA", "Negro", "Alta gama", 25000));
+            pcLujosa.AgregarHijo(new Archivo("Gabinete RGB", "NZXT", "Blanco", "Con luces", 2500));
 
+            //  PC MEDIA
             Componente pcMedia = new Directorio("PC Media");
 
-            pcMedia.AgregarHijo(new Archivo("RAM", "Kingston", "Negro", "16GB", 1200));
-            pcMedia.AgregarHijo(new Archivo("GPU", "NVIDIA", "Negro", "RTX 3060", 8000));
-            pcMedia.AgregarHijo(new Archivo("Gabinete", "Genérico", "Negro", "Normal", 700));
+            pcMedia.AgregarHijo(new Archivo("RAM 16GB", "Kingston", "Negro", "DDR4", 1200));
+            pcMedia.AgregarHijo(new Archivo("GPU RTX 3060", "NVIDIA", "Negro", "Gama media", 8000));
 
+            // PC BÁSICA
             Componente pcBasica = new Directorio("PC Básica");
 
-            pcBasica.AgregarHijo(new Archivo("RAM", "Kingston", "Negro", "8GB", 500));
-            pcBasica.AgregarHijo(new Archivo("Disco", "WD", "Negro", "1TB", 600));
-            pcBasica.AgregarHijo(new Archivo("Gabinete", "Genérico", "Negro", "Simple", 400));
+            pcBasica.AgregarHijo(new Archivo("RAM 8GB", "Kingston", "Negro", "DDR4", 500));
+            pcBasica.AgregarHijo(new Archivo("Disco 1TB", "WD", "Negro", "HDD", 600));
 
-            Componente tienda = new Directorio("Tienda");
+            int opcion;
 
-            tienda.AgregarHijo(pcLujosa);
-            tienda.AgregarHijo(pcMedia);
-            tienda.AgregarHijo(pcBasica);
+            do
+            {
+                Console.WriteLine("\n===== MENÚ =====");
+                Console.WriteLine("1. Ver PC Lujosa");
+                Console.WriteLine("2. Ver PC Media");
+                Console.WriteLine("3. Ver PC Básica");
+                Console.WriteLine("4. Salir");
+                Console.Write("Selecciona una opción: ");
 
-            Console.WriteLine("Precio total tienda: $" + tienda.ObtenerPrecio);
-            Console.WriteLine("PC Lujosa: $" + pcLujosa.ObtenerPrecio);
-            Console.WriteLine("PC Media: $" + pcMedia.ObtenerPrecio);
-            Console.WriteLine("PC Básica: $" + pcBasica.ObtenerPrecio);
+                opcion = int.Parse(Console.ReadLine());
+
+                switch (opcion)
+                {
+                    case 1:
+                        Console.WriteLine("\n--- PC LUJOSA ---");
+                        MostrarComponentes(pcLujosa);
+                        Console.WriteLine("Total: $" + pcLujosa.ObtenerPrecio);
+                        break;
+
+                    case 2:
+                        Console.WriteLine("\n--- PC MEDIA ---");
+                        MostrarComponentes(pcMedia);
+                        Console.WriteLine("Total: $" + pcMedia.ObtenerPrecio);
+                        break;
+
+                    case 3:
+                        Console.WriteLine("\n--- PC BÁSICA ---");
+                        MostrarComponentes(pcBasica);
+                        Console.WriteLine("Total: $" + pcBasica.ObtenerPrecio);
+                        break;
+
+                    case 4:
+                        Console.WriteLine("Saliendo...");
+                        break;
+
+                    default:
+                        Console.WriteLine("Opción inválida");
+                        break;
+                }
+
+            } while (opcion != 4);
 
             Console.ReadLine();
         }
@@ -203,7 +252,10 @@ namespace composite
 <img width="305" height="172" alt="image" src="https://github.com/user-attachments/assets/9fce5556-d206-46e3-bbb8-286a64c8dcc3" />
 
 ## Ejecución
-[![image.png](https://i.postimg.cc/XYFzWgfv/image.png)](https://postimg.cc/mPLwNC6x)
+
+![image.avif](https://user5014.na.imgto.link/public/20260319/image.avif)
+
+![image.avif](https://user5014.na.imgto.link/public/20260319/image-2.avif)
 
 
 ## Diagrama UML
